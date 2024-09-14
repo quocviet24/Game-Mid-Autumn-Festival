@@ -1,10 +1,27 @@
-body{
-  background-color: black;
+html, body {
+  height: 100%;
   margin: 0;
   overflow: hidden;
 }
-.ball{
+
+body{
+  background-image: url('/images/brgBall.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  overflow: hidden;
+  
+}
+body img{
+  width: 100%;
+  height: 100%;
+}
+.ball {
   position: absolute;
-  background-color: white;
+  background-image: url('/images/icon.png');
+  background-repeat: no-repeat;
+  background-size: contain; /* Đảm bảo hình ảnh nằm gọn trong phần tử */
+  background-position: center; /* Căn giữa hình ảnh */
   border-radius: 50%;
 }
+

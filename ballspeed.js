@@ -2,7 +2,7 @@ const maxWeight = window.innerWidth;
 const maxHeight = window.innerHeight;
 var maxBall = 20;
 var initBall = maxBall;
-var size = 50;
+var size = 150;
 var time = 30000; // 4000 = 4s
 var timeset = 0;
 var timeoutId = setTimeout(function() {
@@ -37,8 +37,8 @@ function createBall(x,y){
   return ball;
 }
 function animation(ball){
-  var dx = Math.random() * 10 + 20;
-  var dy = Math.random() * 10 + 20;
+  var dx = Math.random() * 10 + 10;
+  var dy = Math.random() * 10 + 10 ;
   function move(){
     let x = parseFloat(ball.style.left);
     let y = parseFloat(ball.style.top);
