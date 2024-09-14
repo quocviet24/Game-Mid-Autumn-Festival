@@ -1,0 +1,10 @@
+body{
+  background-color: black;
+  margin: 0;
+  overflow: hidden;
+}
+.ball{
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+}
