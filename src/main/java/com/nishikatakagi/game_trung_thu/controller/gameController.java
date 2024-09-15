@@ -16,4 +16,14 @@ public class gameController {
     public String showGame1() {
         return "/part1.html";
     }
+
+    @GetMapping("/holdBall")
+    public String showGame3() {
+        return "/game_ball_break.html";
+    }
+
+    @GetMapping("/run")
+    public String showGame4() {
+        return "/trex.html";
+    }
 }

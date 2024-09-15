@@ -65,18 +65,42 @@ body{
   padding: 10px;
   background-color: #f9f9f9;
   width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho khung */
+  border-radius: 10px; /* Làm tròn các góc */
 }
 
 .frame img {
   width: 100%; /* Adjust the width as needed */
   height: auto; /* Adjust the height as needed */
   margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng cho hình ảnh */
+  border-radius: 5px; /* Làm tròn các góc của hình ảnh */
 }
 
 .frame button {
   padding: 5px 10px;
-  background-color: #007BFF;
+  background: linear-gradient(to right, yellow, orange); /* Gradient từ vàng sang cam */
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px; /* Làm tròn các góc của nút */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
+
+.frame button:hover {
+  transform: translateY(-2px); /* Dịch chuyển nút lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Tăng đổ bóng khi hover */
+  background: linear-gradient(to right, orange, yellow); /* Đảo ngược gradient khi hover */
+  animation: sparkle 1s infinite alternate; /* Thêm hiệu ứng lấp lánh */
+}
+
+@keyframes sparkle {
+  0% {
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6); /* Màu vàng nhạt */
+  }
+  100% {
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.8); /* Màu cam nhạt */
+  }
+}
+

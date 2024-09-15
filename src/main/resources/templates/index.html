@@ -7,7 +7,114 @@
     <link rel="stylesheet" href="/css/index.css">
     <title>TRUNG THU GAME</title>
 </head>
+<style>
+    html, body {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
 
+body{
+  background-image: url('/images/brgBall.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  overflow: auto;
+
+}
+#chest {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#chest input {
+  width: 80px;
+  height: 20px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#chest button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#chest button img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  /* Adjust the width as needed */
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #dc8a8a;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho khung */
+  border-radius: 10px; /* Làm tròn các góc */
+}
+
+.frame img {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* Adjust the height as needed */
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng cho hình ảnh */
+  border-radius: 5px; /* Làm tròn các góc của hình ảnh */
+}
+
+.frame button {
+  padding: 15px 20px;
+  background: linear-gradient(to right, yellow, orange); /* Gradient từ vàng sang cam */
+  color: blue; /* Màu xanh cho chữ */
+  font-size: 16px; /* Kích thước chữ lớn hơn */
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Làm tròn các góc của nút */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.frame button:hover {
+  transform: translateY(-2px); /* Dịch chuyển nút lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Tăng đổ bóng khi hover */
+  background: linear-gradient(to right, orange, yellow); /* Đảo ngược gradient khi hover */
+  animation: sparkle 1s infinite alternate; /* Thêm hiệu ứng lấp lánh */
+}
+
+@keyframes sparkle {
+  0% {
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6); /* Màu vàng nhạt */
+  }
+  100% {
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.8); /* Màu cam nhạt */
+  }
+}
+</style>
 <body>
 <div style="display:flex; height: 100%;">
     <div style="width: 50%;">
@@ -30,7 +137,7 @@
             </div>
             <div class="frame">
                 <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 3">
-                <button onclick="goToGameBall1()">Nổ bóng</button>
+                <button onclick="goToGameBall2()">Nổ bóng</button>
             </div>
             <div class="frame">
                 <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 4">
@@ -53,15 +160,15 @@
     }
 
     function goToGameBall1() {
-      window.location.href="ball.html"
+      window.location.href="holdBall"
     }
 
     function goToGameBall2() {
-      window.location.href="ball.html"
+      window.location.href="holdBall"
     }
 
     function goToGameDuck() {
-      window.location.href="TRex.html"
+      window.location.href="run"
     }
 </script>
 </body>

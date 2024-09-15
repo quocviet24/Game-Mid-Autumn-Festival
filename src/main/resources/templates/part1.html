@@ -4,15 +4,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/part1.css">
+    <link rel="stylesheet" type="text/css" href="part1.css">
     <title>Document</title>
 </head>
+<style>
+    .game_button {
+  background-image: url('/images/ruoc-den-trung-thu-1.jpg'); /* Đặt ảnh nền */
+  background-size: cover; /* Đảm bảo ảnh phủ toàn bộ div */
+  background-position: center; /* Căn chỉnh ảnh ở giữa */
+  filter: brightness(0.8); /* Giảm độ sáng của ảnh xuống 80% */
+  border: none; /* Loại bỏ viền */
+  cursor: pointer; /* Hiển thị con trỏ chuột như nút */
+}
+
+
+.game_button button {
+  background-color: rgb(235, 188, 101); /* Set the button background color to orange */
+  color: rgb(32, 98, 32); /* Set the button text color to green */
+  padding: 10px 20px; /* Add some padding to the button */
+  margin: 5px 5px 5px 5px;
+}
+
+.game_button button:hover {
+  background-color: #ffa07a; /* Set the button background color to a darker orange on hover */
+}
+
+/* ************************************************************************** */
+header {
+  position: relative;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background: none; /* Remove the background from the main header */
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/trung_thu_header.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px); /* Blur only the background */
+  z-index: -1; /* Place the background behind the content */
+  opacity: 0.8; /* Adjust the opacity if needed */
+}
+
+h1 {
+  font-size: 50px; /* Set the font size of the header title */
+
+  margin: 0; /* Remove the default margin */
+}
+
+.header button {
+  background-color: #4CAF50; /* Set the button background color */
+  color: #fff; /* Set the button text color */
+  border: none; /* Remove the default button border */
+  padding: 10px 20px; /* Add some padding to the button */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+.header button:hover {
+  background-color: #3e8e41; /* Set the button background color on hover */
+}
+
+#popup-container {
+  display: none; /* Ban đầu ẩn */
+  position: fixed; /* Đảm bảo nó nằm cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối để làm nổi bật popup */
+  z-index: 9999; /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+}
+
+#popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#popup-text {
+  font-size: 18px; /* Set the font size of the popup text */
+  margin: 0; /* Remove the default margin */
+}
+
+
+.invisible-button {
+  background-color: transparent; /* Nền trong suốt */
+  border: none; /* Không có viền */
+  color: transparent; /* Màu chữ trong suốt */
+  cursor: pointer; /* Hiển thị con trỏ như một nút */
+  width: 100px; /* Đặt chiều rộng (có thể thay đổi tùy ý) */
+  height: 50px; /* Đặt chiều cao */
+  position: relative; /* Đặt vị trí để dễ dàng xử lý */
+  opacity: 0; /* Làm cho nút tàng hình */
+}
+
+.invisible-button:hover {
+  opacity: 0.1; /* Tăng độ nhìn thấy khi di chuột, nếu muốn hiển thị nhẹ */
+}
+
+#role{
+  display: none;
+  background-image: url('/images/ruoc-den-trung-thu-1.jpg'); /* Đặt ảnh nền */
+  background-size: cover; /* Đảm bảo ảnh phủ toàn bộ div */
+  background-position: center; /* Căn chỉnh ảnh ở giữa */
+  filter: brightness(0.8); /* Giảm độ sáng của ảnh xuống 80% */
+  border: none; /* Loại bỏ viền */
+  cursor: pointer; /* Hiển thị con trỏ chuột như nút */
+}
+</style>
 
 <body>
 <header class="header">
     <h1>Game trung thu cho em Thảo nè </h1>
-    <button id="back-btn">Back</button>
-    <button id="role-btn" onclick="popup()">Luật chơi</button>
+    <button id="back-btn" onclick="goHome()">Back</button>
+    <button id="rule-btn">Luật chơi</button>
     <button id="suggest-btn" class="invisible-button">Suggest</button>
     <!-- The popup container -->
     <div id="popup-container">
@@ -25,9 +144,14 @@
 
 </div>
 
-<script>
+<script >
+    function goHome(){
+        window.location.href="/"
+    }
+
     // Get the suggest button and popup container elements
 const suggestBtn = document.getElementById('suggest-btn');
+const ruleBtn = document.getElementById('rule-btn');
 const popupContainer = document.getElementById('popup-container');
 const popupText = document.getElementById('popup-text');
 const divbutton = document.getElementById("game_btn");
@@ -35,7 +159,15 @@ const maxButton = 899;
 // Add an event listener to the suggest button
 suggestBtn.addEventListener('click', () => {
   // Add additional text or attributes
-  popupText.textContent = "Dòng thứ ... từ dưới lên. hihi";
+  popupText.textContent = "Dòng thứ ... từ dưới lên. ";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
+ruleBtn.addEventListener('click', () => {
+  // Add additional text or attributes
+  popupText.textContent = "Game kho bãu";
 
   // Show the popup container
   popupContainer.style.display = 'block';
@@ -57,10 +189,6 @@ function addButton(){
 for(var i =0 ;i<= maxButton;i++)
 {
   addButton();
-}
-var op = 1;
-function popup(){
-
 }
 </script>
 </body>
