@@ -22,48 +22,81 @@ body{
   overflow: auto;
 
 }
-#chest {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+.chest {
+  --gold: #feb21f;
+  --beige: #f4e2c8;
+  --black: #101010;
+  --blackLight: #707696;
+  --blackAlpha: rgba(0, 0, 0, 0.2);
+
+  position: relative;
+  width: 14rem;
+  height: 10rem;
+  border: solid var(--gold);
+  border-width: 0 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    var(--blackLight) 0%,
+    var(--blackLight) 30%,
+    var(--gold) 30%,
+    var(--gold) 40%,
+    var(--blackLight) 40%,
+    var(--blackLight) 100%
+  );
+  box-shadow: 0.25rem 0.25rem var(--blackAlpha);
+}
+/*shadow*/
+.chest::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  bottom: 0;
+  left: 50%;
+  border-radius: 0 0.25rem 0.25rem 0;
+  background-color: var(--blackAlpha);
+}
+.chest_keyholeBG {
+  position: absolute;
+  top: 40%;
+  width: 4rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gold);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+.chest_keyhole {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
 }
-
-#chest input {
-  width: 80px;
-  height: 20px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
+.chest_keyhole::before {
+  content: "";
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--black);
 }
-
-#chest button {
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-#chest button img {
-  width: 100%;
-  height: 100%;
+.chest_keyhole::after {
+  content: "";
+  display: block;
+  width: 0.25rem;
+  height: 0.75rem;
+  margin-top: -0.25rem;
+  background-color: var(--black);
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  /* Adjust the width as needed */
+  display: grid; /* Sử dụng CSS Grid */
+  grid-template-columns: repeat(2, 1fr); /* 2 cột, mỗi cột chiếm 1 phần */
+  grid-template-rows: repeat(2, 1fr);    /* 2 hàng, mỗi hàng chiếm 1 phần */
+  gap: 10px; /* Khoảng cách giữa các phần tử */
 }
 
 .frame {
@@ -74,7 +107,7 @@ body{
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #dc8a8a;
-  width: 30%;
+  width: 90%; /* Chiếm toàn bộ chiều rộng của mỗi ô */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho khung */
   border-radius: 10px; /* Làm tròn các góc */
 }
@@ -114,26 +147,107 @@ body{
     box-shadow: 0 4px 8px rgba(255, 165, 0, 0.8); /* Màu cam nhạt */
   }
 }
+
+h1 {
+  font-family:'Cedarville Cursive', cursive;
+  font-weight: normal;
+  font-size: 4em;
+}
+.heart{
+    position: relative;
+    width: 100px;
+    height: 90px;
+    float: left;
+    animation: heartbeat 1s infinite
+}
+.heart:before,
+.heart:after{
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #fc2e5a;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.heart:after{
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25%, 75% {
+        transform: scale(1.2);
+    }
+}
+
+
+    #popup-container {
+  display: none; /* Ban đầu ẩn */
+  position: fixed; /* Đảm bảo nó nằm cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối để làm nổi bật popup */
+  z-index: 9999; /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+}
+
+#popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#popup-text {
+  font-size: 18px; /* Set the font size of the popup text */
+  margin: 0; /* Remove the default margin */
+}
 </style>
 <body>
-<div style="display:flex; height: 100%;">
-    <div style="width: 50%;">
-        <div id="chest">
-            <input type="password" placeholder="Enter password" id="password" />
-            <button id="open">
-                🔒
-            </button>
+<div style="display:flex; justify-content: space-between;x` height: 100%;">
+    <div style="margin: 70px 0px 0px 530px" class="chest">
+        <div class="chest_keyholeBG">
+            <div class="chest_keyhole"></div>
         </div>
     </div>
-    <div style="height:100%;display:flex;align-items: center; width: 50%;">
+    <div style="height: 100vh; display: flex; align-items: center; width: 50%; margin: 0 auto;">
         <div class="gallery">
             <div class="frame">
                 <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 1">
                 <button onclick="goToGameKhoBau()">Game tìm kho báu bị ẩn</button>
             </div>
-            <div class="frame">
-                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 2">
-                <button onclick="goToGameBall1()">Giữ bóng</button>
+            <div id="hint-container" style="background: linear-gradient(to right, #42ebeb, pink);" class="frame">
+                <div id="hint" class="heart"></div>
             </div>
             <div class="frame">
                 <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 3">
@@ -143,18 +257,19 @@ body{
                 <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 4">
                 <button onclick="goToGameDuck()">Vịt bầu run</button>
             </div>
-            <div class="frame">
-                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 5">
-                <button>Button 5</button>
-            </div>
-            <div class="frame">
-                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 6">
-                <button>Button 6</button>
-            </div>
+        </div>
+    </div>
+    <!-- The popup container -->
+    <div id="popup-container">
+        <div id="popup">
+            <p id="popup-text">Dòng thứ ... từ dưới lên </p>
         </div>
     </div>
 </div>
 <script>
+    const popupText = document.getElementById('popup-text');
+    const ruleBtn = document.getElementById('hint');
+    const popupContainer = document.getElementById('popup-container');
     function goToGameKhoBau() {
       window.location.href="khobau"
     }
@@ -170,6 +285,23 @@ body{
     function goToGameDuck() {
       window.location.href="run"
     }
+
+    // Add an event listener to the popup container to close it when clicked outside
+popupContainer.addEventListener('click', (e) => {
+  if (e.target === popupContainer) {
+    // Hide the popup container
+    popupContainer.style.display = 'none';
+  }
+});
+
+    ruleBtn.addEventListener('click', () => {
+  // Add additional text or attributes
+  popupText.textContent = "Game kho bãu";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
 </script>
 </body>
 

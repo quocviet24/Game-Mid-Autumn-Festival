@@ -63,101 +63,204 @@ body img{
     button:hover {
       background: linear-gradient(to bottom, orange, yellow); /* Đảo màu khi hover */
     }
+
+        #timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    visibility: hidden; /* Ban đầu ẩn */
+}
+
+#timer {
+    font-size: 72px; /* Tăng kích thước phông chữ */
+    color: #FFD700; /* Màu vàng */
+    font-weight: bold; /* Làm đậm chữ */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm hiệu ứng bóng đổ để chữ nổi bật hơn */
+}
+
+#popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối để làm nổi bật popup */
+    z-index: 9999; /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+}
+
+#popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#popup p {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+#popup-close {
+    background: linear-gradient(to bottom, yellow, orange); /* Dải màu vàng cam */
+    border: none;
+    border-radius: 5px; /* Làm cho nút tròn hơn */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#popup-close:hover {
+    background: linear-gradient(to bottom, orange, yellow); /* Đảo màu khi hover */
+}
     </style>
-</head>
 <body>
 <div id="start">
     <button onclick="start()">Start</button>
 </div>
+<div id="timer-container">
+    <div id="timer">30</div>
+</div>
+<div id="popup-container">
+    <div id="popup">
+        <p>Welcome to the website!</p>
+    </div>
+</div>
 <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const popupContainer = document.getElementById('popup-container');
+    const popup = document.getElementById('popup');
+
+    // Hiển thị popup khi trang web được tải xong
+    popupContainer.style.display = 'flex';
+
+    // Thêm sự kiện click vào container để đóng popup khi nhấn ngoài popup
+    popupContainer.addEventListener('click', () => {
+        popupContainer.style.display = 'none';
+    });
+
+    // Ngăn popup đóng khi nhấn vào chính popup
+    popup.addEventListener('click', (event) => {
+        event.stopPropagation(); // Ngăn sự kiện click truyền lên container
+    });
+});
+
     const maxWeight = window.innerWidth;
-const maxHeight = window.innerHeight;
-var maxBall = 20;
-var initBall = maxBall;
-var size = 80;
-var time = 30000;
-var timeset = 0;
-var timeoutId = setTimeout(function() {
-  alert("ok");
-}, time);
+    const maxHeight = window.innerHeight;
+    var maxBall = 20;
+    var initBall = maxBall;
+    var size = 50;
+    var time = 30000; // 30 giây
+    var timeset = 0;
+    var timerInterval;
 
-clearTimeout(timeoutId);
+    const timerContainer = document.getElementById('timer-container');
+    const timerDisplay = document.getElementById('timer');
 
-function createBall(x,y){
-  var ball = document.createElement("div");
-  ball.classList.add("ball");
-  if(x < 0 && y < 0){
-  ball.style.left = `${Math.random()* (maxWeight - 50)}px`;
-  ball.style.top = `${Math.random()* (maxHeight - 50)}px`;
-  }
-  else{
-    ball.style.left = `${x}px`;
-    ball.style.top = `${y}px`;
-  }
-  ball.style.width= `${size}px`;
-  ball.style.height= `${size}px`;
+    function createBall(x, y) {
+        var ball = document.createElement("div");
+        ball.classList.add("ball");
+        if (x < 0 && y < 0) {
+            ball.style.left = `${Math.random() * (maxWeight - 50)}px`;
+            ball.style.top = `${Math.random() * (maxHeight - 50)}px`;
+        } else {
+            ball.style.left = `${x}px`;
+            ball.style.top = `${y}px`;
+        }
+        ball.style.width = `${size}px`;
+        ball.style.height = `${size}px`;
 
-  ball.onmouseover = function(){
+        ball.onmouseover = function () {
+            this.remove();
+            initBall--;
+            Youwin();
+            cancelAnimationFrame(ball);
+        };
 
-    this.remove();
-    initBall--;
-    Youwin();
-    cancelAnimationFrame(ball);
-  };
-
-  document.body.appendChild(ball);
-  return ball;
-}
-function animation(ball){
-  var dx = Math.random() * 10 + 10;
-  var dy = Math.random() * 10 + 10 ;
-  function move(){
-    let x = parseFloat(ball.style.left);
-    let y = parseFloat(ball.style.top);
-    if(x+dx > maxWeight - 50 || x +dx < 0)
-    {
-      dx = -dx;
+        document.body.appendChild(ball);
+        return ball;
     }
-    if(y+dy > maxHeight - 50 || y +dy < 20)
-    {
-        dy = -dy;
-    }
-    ball.style.left = `${x + dx}px`;
-    ball.style.top = `${y + dy}px`;
-    requestAnimationFrame(move);
-  }
 
-  move();
-}
+    function animation(ball) {
+        var dx = Math.random() * 10 + 14;
+        var dy = Math.random() * 10 + 14;
+        function move() {
+            let x = parseFloat(ball.style.left);
+            let y = parseFloat(ball.style.top);
+            if (x + dx > maxWeight - 50 || x + dx < 0) {
+                dx = -dx;
+            }
+            if (y + dy > maxHeight - 50 || y + dy < 20) {
+                dy = -dy;
+            }
+            ball.style.left = `${x + dx}px`;
+            ball.style.top = `${y + dy}px`;
+            requestAnimationFrame(move);
+        }
 
-function start(){
-  document.getElementById("start").style.display = "none";
-  for(var i=0;i<initBall;i++)
-    {
-      var ball = createBall(-1,-1);
-      animation(ball);
+        move();
     }
-    timeoutId = setTimeout(function() {
-      if(initBall > 0)
-      {
-        alert("You lost!!!Again!!!");
-        document.getElementById("start").style.display = "block";
-        initBall = maxBall;
-        removeBall();
-      }
-      timeset = 0;
-  }, time);
-}
-function Youwin(){
-  if(initBall == 0){
-  alert("OK!!! You win!!!");
-  window.location.href = "/";
-  }
-}
-function removeBall(){
-  const memeDivs = document.querySelectorAll('div.ball');
-memeDivs.forEach(div => div.remove());
-}
+
+    function start() {
+        document.getElementById("start").style.display = "none";
+        timerContainer.style.visibility = "visible"; // Hiển thị bộ đếm ngược
+        var timeRemaining = 30; // Thời gian đếm ngược ban đầu
+
+        // Cập nhật hiển thị bộ đếm ngược
+        timerDisplay.textContent = timeRemaining;
+
+        timerInterval = setInterval(function () {
+            timeRemaining--;
+            timerDisplay.textContent = timeRemaining;
+
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                timerContainer.style.visibility = "hidden"; // Ẩn bộ đếm ngược
+                alert("You lost!!! Again!!!");
+                document.getElementById("start").style.display = "block";
+                initBall = maxBall;
+                removeBall();
+            }
+        }, 1000);
+
+        for (var i = 0; i < initBall; i++) {
+            var ball = createBall(-1, -1);
+            animation(ball);
+        }
+
+        setTimeout(function () {
+            if (initBall > 0) {
+                alert("You lost!!! Again!!!");
+                document.getElementById("start").style.display = "block";
+                initBall = maxBall;
+                removeBall();
+            }
+            timeset = 0;
+        }, time);
+    }
+
+    function Youwin() {
+        if (initBall == 0) {
+            alert("OK!!! You win!!!");
+            window.location.href = "/";
+        }
+    }
+
+    function removeBall() {
+        const memeDivs = document.querySelectorAll('div.ball');
+        memeDivs.forEach(div => div.remove());
+    }
+
 </script>
 </body>
 </html>

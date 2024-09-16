@@ -4,7 +4,7 @@
 <head>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-        const scoreWin = 100;
+        const scoreWin = 600;
         function youWin() {
             alert("You Win!");
         }
@@ -2221,17 +2221,13 @@
 <body id="t">
 
 <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
-    <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">Running T-Rex
+    <div class="onlyforchrome" style="color:yellow; font-size: 40px;text-align: center;font-family: Helvetica;">VỊT Running
     </div>
-    <div class="onlyforchrome"
-         style="margin-top:5px;text-align:center;color:#ffde59;margin-bottom:80px; font-size:.8em;line-height:1.2em;font-family: Georgia;">
-        <a href="http://www.thecodepost.org/internet/play-hidden-t-rex-game-offline-chrome/"
-           target="_blank"><strong>T-Rex Dino game</strong></a> from Google Chrome offline mode ripped by <a
-            href="http://www.twitter.com/thecodepost" target="_blank"><strong>@thecodepost</strong></a>.<br /> Press
-        "Space" to jump your Dino and start the game.
+    <div  class="onlyforchrome"
+         style="margin-top:5px;text-align:center;color:#ffde59;margin-bottom:80px; font-size:20px ;font-family: Georgia;">
+        <a href="/"><strong>Duck running game</strong></a> You can go home <a
+            href="/"><strong>Here</strong></a>.<br /> Ấn nút "space" để bắt đầu game và để nhảy. Đạt 600 điểm để giành chiến thắng
     </div>
-    <div id="main-frame-notchrome" style="display:none; margin-top:50px;">Sorry, this game only runs on the Google
-        Chrome! You can download it free <a href="https://www.google.com/chrome">here</a></div>
     <div id="offline-resources" jstcache="0">
         <div id="offline-resources-1x" jstcache="0">
             <img id="1x-obstacle-large"
@@ -2247,8 +2243,7 @@
                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAYAgMAAADWncTDAAAABlBMVEX///9TU1NYzE1OAAAAAXRSTlMAQObYZgAAAO1JREFUeF690TFqxUAQA1BNoRtk7jMu3E9Auv9Vgr/5A863Y9zEhVhkHmhZsEGkw4Lppmllh1tcLHx+aRj2YnEDuQFvcQW+EoZY0TQLCZbEVxRxAvY+i8ikW0C0bwFdbictG2zvu/4EcCuBF0B23IBsQHZBYgm1n86BN+BmyV5rQFyCJAiDJSTfgBV9BbjvXdzIcKchpMOYd3gO/jvCeuUGFALg95J0/SrtQlrzz+sAjDwCIQsbWAdgbqrQpKYRjmPuAfU5dMC+c0rxOTiO+T6ZlK4pbcDLI1DIRaf3GxDGALkQHnD+cGhMKeox+AEOL3mLO7TQZgAAAABJRU5ErkJggg=="
                  jstcache="0">
             <img id="1x-horizon"
-                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLAAAAAMAgMAAAAPCKxBAAAABlBMVEX///9TU1NYzE1OAAAAAXRSTlMAQObYZgAAALJJREFUeF7t1EEKAyEMhtEvMNm7sPfJEVyY+1+ltLgYAsrQCtWhbxEhQvgxIJtSZypxa/WGshgzKdbq/UihMFMlt3o/CspEYoihIMaAb6mCvM6C+BTAeyo+wN4yykV/6pVfkdLpVyI1hh7GJ6QunUoLEQlQglNP2nkQkeF8+ei9cLxMue1qxVRfk1Ej0s6AEGWfVOk0QUtnK5Xo0Lac6wpdtnQqB6VxomPaz+dgF1PaqqmeWJlz1jYUaSIAAAAASUVORK5CYII="
-                 jstcache="0">
+                 src="images/grass.jpg" jstcache="0">
 
             <div style="width: 300px;">
                 <img id="1x-trex" src="images/duck_icon.png" style="width: 100%; height: auto;">
@@ -2272,8 +2267,7 @@
                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAAwAQMAAAAsMYMXAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAPdJREFUeF7tkzFqAzEQRb9RsZ11BF0jlXSlpDdYOcFeSeCLKLeYQujHwxRrtF0gUoqo+AwfPRh4DDZByKk7tkv3rNszWhLHKv7BhtObALxF3LP44vRvRoLPTa4avoS8BLA+PSNFzyqAq/wDwNZxrxKBxq5axLGRS4EkgP6A6rrhy6ZVQLoiZKpfRJ8NqCp+HbCZpAcromNNHTfoeWS7hwnA//tROIpm17lddCbFgMAylGSZANiRhL1ou2treo0/ErB5AtAwbr8e8HK28wpwP8rmpwCv23+cPZhvK8GOCUD4lMHRALiOw8O9TAAcB2C8B7zDSvPw+8A3sQJ/MSdPGzIAAAAASUVORK5CYII="
                  jstcache="0">
             <img id="2x-horizon"
-                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACWAAAAAYAQMAAABEalRSAAAABlBMVEX///9TU1NYzE1OAAAAAXRSTlMAQObYZgAAAOtJREFUeF7tljEKwzAMRb/J0CWgI/QKOYAh1+pUcjQfpUfw2MFEHVyDQSQmQUNM9AYNcobnh4egU+YVqhAvZSpgsfolPnSv5d0nz3vHslgUdK81RLzyvHcsi+WBNxQh4Ln8pw4Wi7skAg9mXgHMrEACXJnbHIllsbqGAtwXhnYswzFzwPWxWEPc2CexoobkHM4ZpD6s2loWiyIEEwCChIomMiMEHqgP573C9eHkc5VLWh3XsljnGVoLWVl+31bp38piTVVuihtPOAm9kcRLbrFjEvqwamtZLK5eI8sSan9rXEK0LcNFrY5oWawf59S7YSRD7eMAAAAASUVORK5CYII="
-                 jstcache="0">
+                 src="images/grass.jpg" jstcache="0">
             <img id="2x-trex" src="images/duck_icon.png" style="width: 100%; height: auto;">
             <img id="2x-restart"
                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABAAgMAAADE0Nm5AAAACVBMVEX////39/dTU1OabbyfAAAAAXRSTlMAQObYZgAAAGNJREFUeF7d1CEOwDAMQ9GS3q/ExPcz8Sm3gYBWVRo0afvwSQl0ax1To22JntKWupfGjriSXiLViCXCmXBHCykJTxaYEeIQGcVrHYklcoX8YYpSUggzcpBTiv5JtQWorUltmS6s4ZKtz2GgjAAAAABJRU5ErkJggg=="
