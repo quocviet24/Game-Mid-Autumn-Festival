@@ -4,9 +4,9 @@
 <head>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-        const scoreWin = 600;
+        const scoreWin = 400;
         function youWin() {
-            alert("You Win!");
+            alert("Mật khẩu có chứa những số của ngày + tháng hôm nay");
         }
         function hideClass(name) {
             for (var elem of $(name)) elem.style.display = "none";
@@ -513,7 +513,8 @@
                 return !!this.raqId;
             },
             gameOver: function () {
-                if (this.runningTime >= scoreWin * 100) {
+               console.log(this.runningTime)
+                if (this.runningTime >= scoreWin * 95) {
                     youWin();
                 }
                 this.playSound(this.soundFx.HIT);
@@ -2226,7 +2227,7 @@
     <div  class="onlyforchrome"
          style="margin-top:5px;text-align:center;color:#ffde59;margin-bottom:80px; font-size:20px ;font-family: Georgia;">
         <a href="index.html"><strong>Duck running game</strong></a> You can go home <a
-            href="index.html"><strong>Here</strong></a>.<br /> Ấn nút "space" để bắt đầu game và để nhảy. Đạt 600 điểm để giành chiến thắng
+            href="index.html"><strong>Here</strong></a>.<br /> Ấn nút "space" để bắt đầu game và để nhảy. Đạt hơn 399 điểm để giành chiến thắng
     </div>
     <div id="offline-resources" jstcache="0">
         <div id="offline-resources-1x" jstcache="0">

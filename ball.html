@@ -14,9 +14,11 @@
 </div>
 <div id="popup-container">
     <div id="popup">
-        <p>Welcome to the website!</p>
+        <p>Chào mừng em Thảo đến với trò chơi bắt Vịt<br>Ở đây anh Việt có 20 con Vịt, nếu em Thảo có thể bắt hết được trong 30 giây sẽ giành chiến thắng<br>* Lưu ý: chỉ cần di chuyển con chuột chạm vào con Vịt là bắt được rồi</p>
     </div>
 </div>
+<!-- Nhúng iframe vào trang -->
+<iframe id="musicFrame" src="music.html" style="width: 0; height: 0; border: none;"></iframe>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
     const popupContainer = document.getElementById('popup-container');
@@ -38,9 +40,9 @@
 
     const maxWeight = window.innerWidth;
     const maxHeight = window.innerHeight;
-    var maxBall = 20;
+    var maxBall = 40;
     var initBall = maxBall;
-    var size = 50;
+    var size = 40;
     var time = 30000; // 30 giây
     var timeset = 0;
     var timerInterval;
@@ -73,8 +75,8 @@
     }
 
     function animation(ball) {
-        var dx = Math.random() * 10 + 14;
-        var dy = Math.random() * 10 + 14;
+        var dx = Math.random() * 10 + 1;
+        var dy = Math.random() * 10 + 1;
         function move() {
             let x = parseFloat(ball.style.left);
             let y = parseFloat(ball.style.top);
@@ -132,7 +134,7 @@
 
     function Youwin() {
         if (initBall == 0) {
-            alert("OK!!! You win!!!");
+            alert("Mật khẩu < 1000");
             window.location.href = "index.html";
         }
     }

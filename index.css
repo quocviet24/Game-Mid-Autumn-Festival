@@ -1,17 +1,19 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   overflow: auto;
 }
 
-body{
-  background-image: url('/images/brgBall.png');
+body {
+  background-image: url('/images/bgrIndex.png');
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
   overflow: auto;
 
 }
+
 .chest {
   --gold: #feb21f;
   --beige: #f4e2c8;
@@ -27,16 +29,15 @@ body{
   border-radius: 0.25rem;
   display: flex;
   justify-content: center;
-  background: linear-gradient(
-    var(--blackLight) 0%,
-    var(--blackLight) 30%,
-    var(--gold) 30%,
-    var(--gold) 40%,
-    var(--blackLight) 40%,
-    var(--blackLight) 100%
-  );
+  background: linear-gradient(var(--blackLight) 0%,
+      var(--blackLight) 30%,
+      var(--gold) 30%,
+      var(--gold) 40%,
+      var(--blackLight) 40%,
+      var(--blackLight) 100%);
   box-shadow: 0.25rem 0.25rem var(--blackAlpha);
 }
+
 /*shadow*/
 .chest::after {
   content: "";
@@ -49,6 +50,7 @@ body{
   border-radius: 0 0.25rem 0.25rem 0;
   background-color: var(--blackAlpha);
 }
+
 .chest_keyholeBG {
   position: absolute;
   top: 40%;
@@ -60,11 +62,13 @@ body{
   background-color: var(--gold);
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
 }
+
 .chest_keyhole {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .chest_keyhole::before {
   content: "";
   display: block;
@@ -73,6 +77,7 @@ body{
   border-radius: 50%;
   background-color: var(--black);
 }
+
 .chest_keyhole::after {
   content: "";
   display: block;
@@ -83,10 +88,14 @@ body{
 }
 
 .gallery {
-  display: grid; /* Sử dụng CSS Grid */
-  grid-template-columns: repeat(2, 1fr); /* 2 cột, mỗi cột chiếm 1 phần */
-  grid-template-rows: repeat(2, 1fr);    /* 2 hàng, mỗi hàng chiếm 1 phần */
-  gap: 10px; /* Khoảng cách giữa các phần tử */
+  display: grid;
+  /* Sử dụng CSS Grid */
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 cột, mỗi cột chiếm 1 phần */
+  grid-template-rows: repeat(2, 1fr);
+  /* 2 hàng, mỗi hàng chiếm 1 phần */
+  gap: 10px;
+  /* Khoảng cách giữa các phần tử */
 }
 
 .frame {
@@ -97,114 +106,188 @@ body{
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #dc8a8a;
-  width: 90%; /* Chiếm toàn bộ chiều rộng của mỗi ô */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho khung */
-  border-radius: 10px; /* Làm tròn các góc */
+  width: 90%;
+  /* Chiếm toàn bộ chiều rộng của mỗi ô */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Thêm đổ bóng cho khung */
+  border-radius: 10px;
+  /* Làm tròn các góc */
 }
 
 .frame img {
-  width: 100%; /* Adjust the width as needed */
-  height: auto; /* Adjust the height as needed */
+  width: 100%;
+  /* Adjust the width as needed */
+  height: auto;
+  /* Adjust the height as needed */
   margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng cho hình ảnh */
-  border-radius: 5px; /* Làm tròn các góc của hình ảnh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Thêm đổ bóng cho hình ảnh */
+  border-radius: 5px;
+  /* Làm tròn các góc của hình ảnh */
 }
 
 button {
   padding: 15px 20px;
-  background: linear-gradient(to right, yellow, orange); /* Gradient từ vàng sang cam */
-  color: blue; /* Màu xanh cho chữ */
-  font-size: 16px; /* Kích thước chữ lớn hơn */
+  background: linear-gradient(to right, yellow, orange);
+  /* Gradient từ vàng sang cam */
+  color: blue;
+  /* Màu xanh cho chữ */
+  font-size: 16px;
+  /* Kích thước chữ lớn hơn */
   border: none;
   cursor: pointer;
-  border-radius: 5px; /* Làm tròn các góc của nút */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
+  border-radius: 5px;
+  /* Làm tròn các góc của nút */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Đổ bóng nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Hiệu ứng chuyển đổi */
 }
 
 .frame button:hover {
-  transform: translateY(-2px); /* Dịch chuyển nút lên khi hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Tăng đổ bóng khi hover */
-  background: linear-gradient(to right, orange, yellow); /* Đảo ngược gradient khi hover */
-  animation: sparkle 1s infinite alternate; /* Thêm hiệu ứng lấp lánh */
+  transform: translateY(-2px);
+  /* Dịch chuyển nút lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  /* Tăng đổ bóng khi hover */
+  background: linear-gradient(to right, orange, yellow);
+  /* Đảo ngược gradient khi hover */
+  animation: sparkle 1s infinite alternate;
+  /* Thêm hiệu ứng lấp lánh */
 }
 
 @keyframes sparkle {
   0% {
-    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6); /* Màu vàng nhạt */
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+    /* Màu vàng nhạt */
   }
+
   100% {
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.8); /* Màu cam nhạt */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.8);
+    /* Màu cam nhạt */
   }
 }
 
 h1 {
-  font-family:'Cedarville Cursive', cursive;
+  font-family: 'Cedarville Cursive', cursive;
   font-weight: normal;
   font-size: 4em;
 }
-.heart{
-    position: relative;
-    width: 100px;
-    height: 90px;
-    float: left;
-    animation: heartbeat 1s infinite
+
+.heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  float: left;
+  animation: heartbeat 1s infinite
 }
+
 .heart:before,
-.heart:after{
-    position: absolute;
-    content: "";
-    left: 50px;
-    top: 0;
-    width: 50px;
-    height: 80px;
-    background: #fc2e5a;
-    -moz-border-radius: 50px 50px 0 0;
-    border-radius: 50px 50px 0 0;
-    -webkit-transform: rotate(-45deg);
-       -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-         -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    -webkit-transform-origin: 0 100%;
-       -moz-transform-origin: 0 100%;
-        -ms-transform-origin: 0 100%;
-         -o-transform-origin: 0 100%;
-            transform-origin: 0 100%;
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #fc2e5a;
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 0 100%;
 }
-.heart:after{
-    left: 0;
-    -webkit-transform: rotate(45deg);
-       -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-         -o-transform: rotate(45deg);
-            transform: rotate(45deg);
-    -webkit-transform-origin: 100% 100%;
-       -moz-transform-origin: 100% 100%;
-        -ms-transform-origin: 100% 100%;
-         -o-transform-origin: 100% 100%;
-            transform-origin :100% 100%;
+
+.heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
 }
 
 @keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    25%, 75% {
-        transform: scale(1.2);
-    }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25%,
+  75% {
+    transform: scale(1.2);
+  }
 }
 
-
-    #popup-container {
-  display: none; /* Ban đầu ẩn */
-  position: fixed; /* Đảm bảo nó nằm cố định trên màn hình */
+#successPopup {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối để làm nổi bật popup */
-  z-index: 9999; /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+  background: rgba(0, 0, 0, 0.5);
+  /* Màu nền tối làm nổi bật popup */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#popup-container {
+  background-color: #cbbc71c5;
+  /* Nền vàng nhạt */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* Đổ bóng nhẹ */
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+  /* Đổ bóng xanh dương */
+  display: none;
+  /* Ban đầu ẩn */
+  position: fixed;
+  /* Đảm bảo nó nằm cố định trên màn hình */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Màu nền tối để làm nổi bật popup */
+  z-index: 9999;
+  /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+}
+
+.popup-content {
+  position: relative;
+  background-color: #d7c987;
+  /* Nền vàng nhạt */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* Đổ bóng nhẹ */
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+  /* Đổ bóng xanh dương */
+  border-image: linear-gradient(45deg, #00f, #0ff) 1;
+  /* Viền lấp lánh xanh dương */
+  font-size: 18px;
+  color: #333;
+  /* Màu chữ */
+  font-family: "Times New Roman", Times, serif; /* Đặt font là Times New Roman */
 }
 
 #popup {
@@ -212,61 +295,100 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: rgb(222, 212, 125);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 #popup-text {
-  font-size: 18px; /* Set the font size of the popup text */
-  margin: 0; /* Remove the default margin */
+  font-size: 18px;
+  /* Set the font size of the popup text */
+  margin: 0;
+  /* Remove the default margin */
 }
 
 /* Basic styling */
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(201, 114, 114, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 input {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 300px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Hiệu ứng khi người dùng gõ vào */
+input:focus {
+  border-color: #FFD700;
+  /* Viền màu vàng */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  transform: scale(1.05);
+  /* Tăng kích thước một chút */
+  outline: none;
+  /* Bỏ đường viền mặc định */
+}
+
+
 #balloonContainer {
-    position: relative;
-    height: 200px;
+  position: relative;
+  height: 300px;
 }
 
 .balloon {
-    position: absolute;
-    background: url('balloon.png') no-repeat;
-    width: 50px;
-    height: 80px;
-    background-size: cover;
-    animation: float 4s ease-in infinite;
+  position: absolute;
+  background: url('/images/b.png') no-repeat;
+  /* Đường dẫn hình ảnh bóng bay */
+  width: 50px;
+  height: 80px;
+  background-size: cover;
+  animation: float 6s ease-in forwards;
+  /* Thời gian bay 6s, hiệu ứng mượt */
+  opacity: 0;
+  /* Bắt đầu với độ trong suốt */
 }
 
 @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-50px); }
-    100% { transform: translateY(0); }
+  0% {
+    transform: translateY(100px);
+    /* Bắt đầu dưới đáy */
+    opacity: 1;
+    /* Hiển thị bóng */
+  }
+
+  90% {
+    opacity: 1;
+    /* Giữ bóng hiển thị trong suốt quá trình */
+  }
+
+  100% {
+    transform: translateY(-300px);
+    /* Kết thúc với vị trí trên cùng container */
+    opacity: 0;
+    /* Bóng bay biến mất */
+  }
 }
