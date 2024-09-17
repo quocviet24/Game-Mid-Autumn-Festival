@@ -2,30 +2,84 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="part1.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="part1.css">
+    <title>Document</title>
 </head>
-
 <body>
-  <header class="header">
+<header class="header">
     <h1>Game trung thu cho em Thảo nè </h1>
-    <button id="back-btn">Back</button>
-    <button id="role-btn" onclick="popup()">Luật chơi</button>
+    <button id="back-btn" onclick="goHome()">Back</button>
+    <button id="rule-btn">Luật chơi</button>
     <button id="suggest-btn" class="invisible-button">Suggest</button>
     <!-- The popup container -->
     <div id="popup-container">
-      <div id="popup">
-        <p id="popup-text">Dòng thứ ... từ dưới lên </p>
-      </div>
+        <div id="popup">
+            <p id="popup-text"></p>
+        </div>
     </div>
-  </header>
-  <div class="game_button" id="game_btn">
-    
-  </div>
+</header>
+<div class="game_button" id="game_btn">
+    <button id="correct" onclick="part1()">Enter this</button>
+</div>
 
-  <script src="part1.js"></script>
+<script >
+    const correct = document.getElementById('correct');
+    function goHome(){
+        window.location.href="index.html"
+    }
+
+    // Get the suggest button and popup container elements
+const suggestBtn = document.getElementById('suggest-btn');
+const ruleBtn = document.getElementById('rule-btn');
+const popupContainer = document.getElementById('popup-container');
+const popupText = document.getElementById('popup-text');
+const divbutton = document.getElementById("game_btn");
+const maxButton = 899;
+// Add an event listener to the suggest button
+suggestBtn.addEventListener('click', () => {
+  // Add additional text or attributes
+  popupText.textContent = "Ù em Thảo tìm thấy nút ẩn rùi nè :>> Nút đúng ở hàng đầu tiên nha ";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
+ruleBtn.addEventListener('click', () => {
+  // Add additional text or attributes
+popupText.innerHTML = "Ẩn giấu khỏi tầm nhìn <br>Trước mắt nhưng xa vời<br>Hãy tìm một chiếc nút đúng đắn dẫn đến lời gợi ý chiến thắng";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
+correct.addEventListener('click', () => {
+  // Add additional text or attributes
+  popupText.textContent = "Mật mã có số 6";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
+// Add an event listener to the popup container to close it when clicked outside
+popupContainer.addEventListener('click', (e) => {
+  if (e.target === popupContainer) {
+    // Hide the popup container
+    popupContainer.style.display = 'none';
+  }
+});
+
+function addButton(){
+  var button = document.createElement("button");
+  button.textContent="Enter this";
+  divbutton.appendChild(button);
+}
+for(var i =0 ;i<= maxButton;i++)
+{
+  addButton();
+}
+</script>
 </body>
 
 </html>

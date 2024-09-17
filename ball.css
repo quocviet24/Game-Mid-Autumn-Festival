@@ -10,7 +10,7 @@ body{
   background-size: cover;
   margin: 0;
   overflow: hidden;
-  
+
 }
 body img{
   width: 100%;
@@ -18,10 +18,100 @@ body img{
 }
 .ball {
   position: absolute;
-  background-image: url('/images/icon.png');
+  width: 70px; /* Kích thước của quả bóng */
+  height: 70px;
+  background-image: url('/images/icon_duck.png');
   background-repeat: no-repeat;
   background-size: contain; /* Đảm bảo hình ảnh nằm gọn trong phần tử */
   background-position: center; /* Căn giữa hình ảnh */
-  border-radius: 50%;
+  border-radius: 50%; /* Làm cho phần tử tròn */
+
+  /* Thêm hiệu ứng */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Bóng đổ */
+  border: 5px solid rgba(255, 223, 0, 0.8); /* Viền màu vàng nhạt, với độ trong suốt */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng khi hover */
 }
 
+    button {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(to bottom, yellow, orange); /* Dải màu vàng cam */
+      border: none;
+      border-radius: 50%; /* Làm cho nút tròn */
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Căn giữa nút */
+    }
+
+    button:hover {
+      background: linear-gradient(to bottom, orange, yellow); /* Đảo màu khi hover */
+    }
+
+        #timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    visibility: hidden; /* Ban đầu ẩn */
+}
+
+#timer {
+    font-size: 72px; /* Tăng kích thước phông chữ */
+    color: #FFD700; /* Màu vàng */
+    font-weight: bold; /* Làm đậm chữ */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm hiệu ứng bóng đổ để chữ nổi bật hơn */
+}
+
+#popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối để làm nổi bật popup */
+    z-index: 9999; /* Đặt giá trị z-index cao để xuất hiện trên các phần tử khác */
+}
+
+#popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#popup p {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+#popup-close {
+    background: linear-gradient(to bottom, yellow, orange); /* Dải màu vàng cam */
+    border: none;
+    border-radius: 5px; /* Làm cho nút tròn hơn */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#popup-close:hover {
+    background: linear-gradient(to bottom, orange, yellow); /* Đảo màu khi hover */
+}

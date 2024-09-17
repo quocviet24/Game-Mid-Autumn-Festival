@@ -2,52 +2,68 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-  <title>TRUNG THU GAME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>TRUNG THU GAME</title>
 </head>
-
 <body>
-  <div style="display:flex; height: 100%;">
-    <div style="width: 50%;">
-      <div id="chest">
-        <input type="password" placeholder="Enter password" id="password" />
-        <button id="open">
-          🔒
-        </button>
-      </div>
+<div style="display:flex; justify-content: space-between; height: 100%;">
+    <div style="margin: 70px 0px 0px 465px" class="chest" id="hop">
+        <div class="chest_keyholeBG">
+            <div class="chest_keyhole"></div>
+        </div>
     </div>
-    <div style="height:100%;display:flex;align-items: center; width: 50%;">
-      <div class="gallery">
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 1">
-          <button onclick="goToGameKhoBau()">Game tìm kho báu bị ẩn</button>
+    <div style="height: 100vh; display: flex; align-items: center; width: 50%; margin: 0 auto;">
+        <div class="gallery">
+            <div class="frame">
+                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 1">
+                <button onclick="goToGameKhoBau()">Game tìm kho báu bị ẩn</button>
+            </div>
+            <div id="hint-container" style="background: linear-gradient(to right, #42ebeb, pink);" class="frame">
+                <div id="hint" class="heart"></div>
+            </div>
+            <div class="frame">
+                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 3">
+                <button onclick="goToGameBall1()">Nổ bóng</button>
+            </div>
+            <div class="frame">
+                <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 4">
+                <button onclick="goToGameDuck()">Vịt bầu run</button>
+            </div>
         </div>
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 2">
-          <button onclick="goToGameBall1()">Giữ bóng</button>
-        </div>
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 3">
-          <button onclick="goToGameBall1()">Nổ bóng</button>
-        </div>
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 4">
-          <button onclick="goToGameDuck()">Vịt bầu run</button>
-        </div>
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 5">
-          <button>Button 5</button>
-        </div>
-        <div class="frame">
-          <img src="images/ruoc-den-trung-thu-1.jpg" alt="Image 6">
-          <button>Button 6</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <script>
+    <!-- The popup container -->
+    <div id="popup-container">
+        <div id="popup">
+            <p id="popup-text">Dòng thứ ... từ dưới lên </p>
+        </div>
+    </div>
+    <!-- Input Popup -->
+    <div id="inputPopup" class="popup" style="display: none;">
+        <div class="popup-container">
+            <div class="popup-content">
+                <input type="text" id="passwordInput" placeholder="Nhập mã">
+                <button onclick="checkPassword()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="successPopup" class="popup" style="display: none;">
+        <div class="popup-container">
+            <div class="popup-content">
+                <p>Chúc mừng bạn đã mở rương!</p>
+                <div id="balloonContainer"></div>
+                <button onclick="closeSuccessPopup()">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const popupText = document.getElementById('popup-text');
+    const ruleBtn = document.getElementById('hint');
+    const popupContainer = document.getElementById('popup-container');
     function goToGameKhoBau() {
       window.location.href="part1.html"
     }
@@ -56,14 +72,76 @@
       window.location.href="ball.html"
     }
 
-    function goToGameBall2() {
-      window.location.href="ball.html"
-    }
-
     function goToGameDuck() {
       window.location.href="TRex.html"
     }
-  </script>
+
+    // Add an event listener to the popup container to close it when clicked outside
+popupContainer.addEventListener('click', (e) => {
+  if (e.target === popupContainer) {
+    // Hide the popup container
+    popupContainer.style.display = 'none';
+  }
+});
+
+    ruleBtn.addEventListener('click', () => {
+  // Add additional text or attributes
+  popupText.textContent = "Game kho bãu";
+
+  // Show the popup container
+  popupContainer.style.display = 'block';
+});
+
+document.getElementById('hop').addEventListener('click', function() {
+    document.getElementById('inputPopup').style.display = 'flex';
+});
+
+function checkPassword() {
+    var password = document.getElementById('passwordInput').value;
+    if (password === '2456') {
+        document.getElementById('inputPopup').style.display = 'none';
+        showSuccessPopup();
+    } else {
+        alert('Mã không đúng. Vui lòng thử lại.');
+    }
+}
+
+function showSuccessPopup() {
+    var successPopup = document.getElementById('successPopup');
+    var balloonContainer = document.getElementById('balloonContainer');
+
+    // Show the popup
+    successPopup.style.display = 'flex';
+
+    // Create balloons
+    for (var i = 0; i < 10; i++) {
+        var balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 90 + '%'; // Random horizontal position
+        balloon.style.bottom = Math.random() * 100 + 'px'; // Random starting position
+        balloonContainer.appendChild(balloon);
+    }
+}
+
+function closeSuccessPopup() {
+    document.getElementById('successPopup').style.display = 'none';
+
+    // Remove balloons
+    var balloonContainer = document.getElementById('balloonContainer');
+    balloonContainer.innerHTML = '';
+}
+
+// Hide popup when clicking outside
+window.addEventListener('click', function(event) {
+    if (event.target === inputPopup) {
+        inputPopup.style.display = 'none';
+    }
+    if (event.target === successPopup) {
+        successPopup.style.display = 'none';
+    }
+});
+
+</script>
 </body>
 
 </html>
